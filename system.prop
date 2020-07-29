@@ -67,7 +67,10 @@ ro.sys.fw.dex2oat_thread_count=4
 debug.enable.sglscale=1
 # used by hwcomposer.msm8952.so and libqdutils.so
 debug.mdpcomp.logs=0
+# Enable backpressure for GL comp
+debug.sf.enable_gl_backpressure=1
 debug.sf.hw=1
+debug.hwui.use_buffer_age=false
 dev.pm.dyn_samplingrate=1
 persist.hwc.mdpcomp.enable=true
 persist.hwc.downscale_threshold=1.15
@@ -77,7 +80,7 @@ lockscreen.rot_override=true
 
 # Disable CABL (Content Adaptive Backlight)
 # used by libmm-dspp-utils.so
-ro.qualcomm.cabl=0
+ro.qualcomm.cabl=1
 
 # OTA
 lineage.updater.uri=https://janforman.org/lineageos/?device={device}
@@ -106,7 +109,7 @@ ro.vendor.gt_library=libqti-gt.so
 sched.colocate.enable=1
 
 # Vendor security patch level
-ro.lineage.build.vendor_security_patch=2018-05-01
+ro.lineage.build.vendor_security_patch=2019-05-01
 
 # Time
 persist.timed.enable=true
