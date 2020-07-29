@@ -1,0 +1,16 @@
+# vim: set ft=sh:
+
+service qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+    disabled
+    writepid /dev/cpuset/system-background/tasks
+
+on late-init
+    start qseecomd
+
+on post-fs-data
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+

@@ -1,0 +1,7 @@
+# vim: set ft=sh:
+
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+    class main
+    user root
+    oneshot
+

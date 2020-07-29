@@ -1,0 +1,12 @@
+# vim: set ft=sh:
+
+service sensors /vendor/bin/sensors.qcom
+    class late_start
+    user root
+    group root
+
+on post-fs-data
+    mkdir /persist/sensors 0775 system system
+    chmod 664 /persist/sensors/sensors_settings
+    chown system root /persist/sensors/sensors_settings
+

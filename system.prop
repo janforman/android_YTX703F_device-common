@@ -1,0 +1,149 @@
+# Audio
+af.fast_track_multiplier=1
+audio_hal.period_size=192
+audio.deep_buffer.media=true
+audio.offload.buffer.size.kb=64
+audio.offload.disable=1
+audio.offload.gapless.enabled=true
+audio.offload.min.duration.secs=30
+audio.offload.multiple.enabled=false
+audio.offload.track.enable=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+audio.parser.ip.buffer.size=262144
+audio.playback.mch.downsample=true
+audio.pp.asphere.enabled=false
+audio.safx.pbe.enabled=true
+
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+
+ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.ssr=false
+tunnel.audio.encode=false
+use.qti.sw.alac.decoder=true
+use.qti.sw.ape.decoder=true
+use.voice.path.for.pcm.voip=true
+voice.conc.fallbackpath=deep-buffer
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
+qcom.hw.aac.encoder=true
+mm.enable.qcom_parser=1048575
+audio.parser.ip.buffer.size=262144
+
+
+# Bluetooth
+bluetooth.hfp.client=1
+vendor.qcom.bluetooth.soc=smd
+ro.btconfig.if=smd
+ro.btconfig.dev=/dev/smd3
+ro.btconfig.vendor=qcom
+ro.btconfig.chip=WCN3680
+# Bluetooth Common Enable Bluetooth Profiles
+ro.bluetooth.hfp.ver=1.7
+ro.qualcomm.bt.hci_transport=smd
+
+# Camera
+media.camera.ts.monotonic=1
+# force HAL1 for below packages
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+# properties for limiting preview size in camera
+camera.display.umax=1920x1080
+camera.display.lmax=1280x720
+# low power mode for camera
+camera.lowpower.record.enable=1
+ro.qq.camera.sensor=3
+# disable gyroscope to prevent invalid access log messages
+persist.camera.gyro.disable=1
+
+# Dex2oat threads for faster app installation
+ro.sys.fw.dex2oat_thread_count=4
+
+#
+# Display
+#
+# used by libscale.so
+debug.enable.sglscale=1
+# used by hwcomposer.msm8952.so and libqdutils.so
+debug.mdpcomp.logs=0
+debug.sf.hw=1
+dev.pm.dyn_samplingrate=1
+persist.hwc.mdpcomp.enable=true
+persist.hwc.downscale_threshold=1.15
+ro.opengles.version=196610
+ro.sf.lcd_density=320
+lockscreen.rot_override=true
+
+# Disable CABL (Content Adaptive Backlight)
+# used by libmm-dspp-utils.so
+ro.qualcomm.cabl=0
+
+
+# FRP
+ro.frp.pst=/dev/block/bootdevice/by-name/config
+
+#
+# Media
+#
+# used by camera.msm8952.so
+vidc.enc.dcvs.extra-buff-count=2
+vidc.enc.narrow.searchrange=1
+drm.service.enabled=true
+ro.config.vc_call_vol_steps=30
+ro.config.media_vol_steps=30
+ro.config.alarm_vol_steps=30
+ro.config.system_vol_steps=30
+
+# Vendor
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.at_library=libqti-at.so
+ro.vendor.gt_library=libqti-gt.so
+# enable game colocation feature
+# used by libqti-gt.so
+sched.colocate.enable=1
+
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2018-05-01
+
+# Time
+persist.timed.enable=true
+
+# WiFi
+wifi.interface=wlan0
+
+# used by perfd
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
+persist.debug.8976.config=true
+ro.cutoff_voltage_mv=3200
+
+ro.config.zram=true
+
+# system props for the cne module #
+# 4 - enable NSRM adb root;#
+# 1 - Only CnE is enabled; NSRM, FMC, and WQE are disabled#
+# 0 - Disables CnE  #
+persist.dpm.feature=4
+
+#
+# Networking settings ported from init.qcom.rc
+#
+
+# Define TCP buffer sizes for various networks
+# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+net.tcp.buffersize.default=4096,87380,524288,4096,16384,110208
+net.tcp.buffersize.wifi=524288,2097152,4194304,262144,524288,1048576
+net.tcp.buffersize.lte=2097152,4194304,8388608,262144,524288,1048576
+net.tcp.buffersize.umts=4094,87380,110208,4096,16384,110208
+net.tcp.buffersize.hspa=4094,87380,1220608,4096,16384,1220608
+net.tcp.buffersize.hsupa=4094,87380,1220608,4096,16384,1220608
+net.tcp.buffersize.hsdpa=4094,87380,1220608,4096,16384,1220608
+net.tcp.buffersize.hspap=4094,87380,1220608,4096,16384,1220608
+net.tcp.buffersize.edge=4093,26280,35040,4096,16384,35040
+net.tcp.buffersize.gprs=4092,8760,11680,4096,8760,11680
+net.tcp.buffersize.evdo=4094,87380,524288,4096,16384,262144
+
+ro.telephony.call_ring.multiple=false
+
+net.tcp.2g_init_rwnd 10

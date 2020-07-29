@@ -1,0 +1,11 @@
+# vim: set ft=sh:
+
+service qcom-radio-sh /vendor/bin/sh /vendor/etc/init/hw/init.qcom.radio.sh
+    class main
+    user root
+    disabled
+    oneshot
+
+# YTX703L
+on property:ro.baseband=msm
+    enable qcom-radio-sh

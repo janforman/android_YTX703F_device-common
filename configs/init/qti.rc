@@ -1,0 +1,12 @@
+# vim: set ft=sh:
+
+service qti /system/vendor/bin/qti
+    class main
+    user radio
+    group radio net_raw oem_2901 usb net_admin
+    disabled
+    writepid /dev/cpuset/system-background/tasks
+
+# YTX703L
+on property:persist.data.mode=concurrent
+    enable qti

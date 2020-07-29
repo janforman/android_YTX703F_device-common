@@ -1,0 +1,30 @@
+# vim: set ft=sh:
+
+# QMUX must be in multiple groups to support external process connections
+service qmuxd /vendor/bin/qmuxd
+    class main
+    user root
+    group radio audio bluetooth gps nfc oem_2901
+    disabled
+    writepid /dev/cpuset/system-background/tasks
+
+# YTX703L
+on property:ro.baseband=msm
+    enable qmuxd
+
+on property:vold.decrypt=trigger_restart_framework
+    restart qmuxd
+
+on boot
+    # Create QMUX daemon socket area
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
+    mkdir /dev/socket/qmux_audio 0770 media audio
+    chmod 2770 /dev/socket/qmux_audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    chmod 2770 /dev/socket/qmux_bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
+    mkdir /dev/socket/qmux_nfc 0770 nfc nfc
+    chmod 2770 /dev/socket/qmux_nfc
+
