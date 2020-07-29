@@ -79,6 +79,8 @@ lockscreen.rot_override=true
 # used by libmm-dspp-utils.so
 ro.qualcomm.cabl=0
 
+# OTA
+lineage.updater.uri=https://janforman.org/lineageos/?device={device}
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/config
