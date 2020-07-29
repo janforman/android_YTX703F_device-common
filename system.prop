@@ -109,7 +109,7 @@ ro.vendor.gt_library=libqti-gt.so
 sched.colocate.enable=1
 
 # Vendor security patch level
-ro.lineage.build.vendor_security_patch=2019-05-01
+ro.lineage.build.vendor_security_patch=2020-04-16
 
 # Time
 persist.timed.enable=true
