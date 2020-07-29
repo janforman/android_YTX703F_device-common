@@ -120,8 +120,6 @@ ro.core_ctl_max_cpu=4
 persist.debug.8976.config=true
 ro.cutoff_voltage_mv=3200
 
-ro.config.zram=true
-
 # system props for the cne module #
 # 4 - enable NSRM adb root;#
 # 1 - Only CnE is enabled; NSRM, FMC, and WQE are disabled#
