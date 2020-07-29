@@ -16,3 +16,4 @@ genfscon sysfs /devices/soc.0/7824900.sdhci/mmc_host/mmc0 u:object_r:sysfs_disk_
 genfscon sysfs /devices/soc.0/7824900.sdhci/mmc_host/mmc1 u:object_r:sysfs_mmc_host:s0
 genfscon sysfs /devices/platform/msm_hsusb               u:object_r:sysfs_android_usb:s0
 genfscon sysfs /devices/platform/msm_hsusb_host          u:object_r:sysfs_android_usb:s0
+genfscon sysfs /android_touch/doubletap2wake             u:object_r:sysfs_dt2w:s0
