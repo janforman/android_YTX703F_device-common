@@ -197,6 +197,12 @@ USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
+# Wait for qseecomd
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# Memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
