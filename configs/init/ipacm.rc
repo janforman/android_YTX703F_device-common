@@ -1,14 +1,14 @@
 # vim: set ft=sh:
 
-service ipacm /system/vendor/bin/ipacm
-    class main
+service vendor.ipacm /system/vendor/bin/ipacm
+    class late_start
     user radio
     group radio inet
     disabled
 
 # YTX703L
 on property:ro.baseband=msm
-    enable ipacm
+    enable vendor.ipacm
 
 on post-fs-data
     #create ipacm log dir

@@ -31,7 +31,7 @@ TARGET_SCREEN_HEIGHT := 1600
 # Device characteristics
 PRODUCT_CHARACTERISTICS := tablet
 
-$(call inherit-product-if-exists, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, $(LOCAL_PATH)/configs/memconfig/phone-xxhdpi-3072-dalvik-heap.mk)
 
 #
 # PRODUCT_PACKAGES rules
@@ -42,6 +42,10 @@ PRODUCT_PACKAGES += \
     AntHalService \
     com.dsi.ant.antradio_library \
     libantradio
+
+# APEX
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -61,6 +65,10 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
+
+# HW crypto
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -119,14 +127,23 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libxml2 \
 
+# Recovery
+PRODUCT_PACKAGES += \
+    twrp.fstab \
+    init.recovery.qcom.rc
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8952 \
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/configs/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+    $(LOCAL_PATH)/configs/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+
+# TimeKeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -147,6 +164,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
 
 # HIDL HAL list
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -157,7 +175,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.mapper@2.0-impl
+    android.hardware.graphics.mapper@2.0-impl-2.1
 
 # Memtrack
 PRODUCT_PACKAGES += \
@@ -173,18 +191,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
-    android.hardware.soundtrigger@2.0-impl
+    android.hardware.soundtrigger@2.0-impl \
 
 # Camera
 PRODUCT_PACKAGES += \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.provider@2.4-external-service
+    android.hardware.camera.provider@2.4-service
 
 # Netutils
 PRODUCT_PACKAGES += \
-    netutils-wrapper-1.0
+    netutils-wrapper-1.0 \
+	libandroid_net
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
@@ -242,9 +260,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-impl \
-    android.hardware.power@1.1-service \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.2-service-qti
 
 # Health HAL
 PRODUCT_PACKAGES += \
@@ -259,7 +275,12 @@ PRODUCT_PACKAGES += \
 
 # Dummy hidl lib for oreo blobs
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0
+    android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -436,5 +457,6 @@ BOARD_VENDOR_EXTRA_SYMLINKS += \
     /vendor/etc/sensors:snsc
 
 PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.hardware.gnss@1.0.so:system/lib64/android.hardware.gnss@1.0-v27.so
-
+    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.hardware.gnss@1.0.so:system/lib64/android.hardware.gnss@1.0-v27.so \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-full-v28.so \
+    prebuilts/vndk/v28/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v28.so
