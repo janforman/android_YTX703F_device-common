@@ -15,5 +15,3 @@ Display | 1600 x 2560 pixels 10.1"
 Rear Camera  | 13.0 MP
 Front Camera | 5.0 MP
 Release Date | December 2016
-
-![Lenovo Yoga Tablet 3 Plus](http://cdn2.gsmarena.com/vv/pics/lenovo/lenovo-yoga-tab3-plus.jpg "Lenovo Tablet 3 Plus")
