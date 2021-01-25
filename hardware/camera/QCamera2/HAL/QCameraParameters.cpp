@@ -5882,6 +5882,7 @@ int32_t QCameraParameters::init(cam_capability_t *capabilities,
 {
     int32_t rc = NO_ERROR;
 
+    capabilities->sharpness_ctrl.def_value = 0;
     m_pCapability = capabilities;
     m_pCamOpsTbl = mmOps;
     m_AdjustFPS = adjustFPS;
