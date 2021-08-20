@@ -80,6 +80,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8952 \
 
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8952 \
@@ -140,6 +144,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
+# Tethering
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay
+
 # TimeKeep
 PRODUCT_PACKAGES += \
     timekeep \
@@ -149,6 +157,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     thermal.msm8952
 
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
+
 # Wifi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
@@ -157,6 +169,7 @@ PRODUCT_PACKAGES += \
     wificond \
     wifilogd \
     hostapd \
+    WifiOverlay \
     libwifi-hal-qcom \
     wcnss_service \
     libwcnss_qmi \
@@ -188,10 +201,14 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
     android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio.service \
     android.hardware.soundtrigger@2.0-impl \
+    android.hardware.audio.effect@6.0 \
+    android.hardware.audio.effect@6.0-impl
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -226,7 +243,6 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-service \
     android.hardware.sensors@1.0-impl
 
 # Vibrator
@@ -247,7 +263,8 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.3-service.clearkey
 
 # Usb HAL
 PRODUCT_PACKAGES += \
@@ -260,13 +277,14 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power-service-qti \
+    vendor.qti.hardware.perf@1.0 \
+    vendor.qti.hardware.perf@2.0
 
 # Health HAL
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-impl \
-    android.hardware.health@2.0-service \
-    android.hardware.health@2.0-service.override
+    android.hardware.health@2.1-impl:64 \
+    android.hardware.health@2.1-service
 
 # Media
 PRODUCT_PACKAGES += \
@@ -317,6 +335,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
@@ -325,6 +344,10 @@ PRODUCT_COPY_FILES += \
 # Device-specific audio configs
 PRODUCT_COPY_FILES += $(foreach audio_config, $(wildcard $(LOCAL_PATH)/configs/audio/*), \
     $(audio_config):$(addprefix $(TARGET_COPY_OUT_VENDOR)/etc/, $(notdir $(audio_config))) )
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
 
 # Standard audio configs
 PRODUCT_COPY_FILES += \
@@ -377,7 +400,9 @@ PRODUCT_COPY_FILES += $(foreach perf_profile, $(wildcard $(LOCAL_PATH)/configs/p
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perfd/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml \
-    $(LOCAL_PATH)/configs/perfd/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml
+    $(LOCAL_PATH)/configs/perfd/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
+    $(LOCAL_PATH)/configs/perfd/targetconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetconfig.xml \
+    $(LOCAL_PATH)/configs/perfd/targetresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetresourceconfigs.xml
 
 # Configs for msm_irqbalance
 PRODUCT_COPY_FILES += $(foreach irqbalance_config, $(wildcard $(LOCAL_PATH)/configs/irqbalance/*), \

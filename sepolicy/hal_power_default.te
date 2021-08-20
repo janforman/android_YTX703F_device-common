@@ -1,1 +1,0 @@
-allow hal_power_default sysfs_dt2w:file w_file_perms;
