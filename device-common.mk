@@ -181,9 +181,6 @@ PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 # HIDL HAL list
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
