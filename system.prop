@@ -120,7 +120,7 @@ ro.vendor.gt_library=libqti-gt.so
 sched.colocate.enable=1
 
 # Vendor security patch level
-ro.lineage.build.vendor_security_patch=2021-02-15
+ro.lineage.build.vendor_security_patch=2021-10-18
 
 # WiFi
 wifi.interface=wlan0
