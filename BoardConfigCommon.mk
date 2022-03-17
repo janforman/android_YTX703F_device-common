@@ -30,6 +30,9 @@ BUILD_BROKEN_DUP_RULES := true
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
+# Disable CLANG
+TARGET_KERNEL_CLANG_COMPILE := false
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
