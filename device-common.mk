@@ -32,6 +32,7 @@ TARGET_SCREEN_HEIGHT := 1600
 PRODUCT_CHARACTERISTICS := tablet
 
 $(call inherit-product, $(LOCAL_PATH)/configs/memconfig/phone-xxhdpi-3072-dalvik-heap.mk)
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 #
 # PRODUCT_PACKAGES rules
